@@ -1,1 +1,24 @@
 
+ name: Run JUnit Tests
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Build and Run Tests
+        run: mvn test  
